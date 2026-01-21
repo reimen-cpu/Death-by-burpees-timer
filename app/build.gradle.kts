@@ -3,6 +3,12 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+import java.util.Properties
+
+val keystoreProperties = Properties()
+val keystoreFile = rootProject.file("app/keystore.properties")
+keystoreFile.inputStream().use { keystoreProperties.load(it) }
+
 android {
     namespace = "com.timer.minimal"
     compileSdk = 34
@@ -15,26 +21,36 @@ android {
         versionName = "1.0"
     }
 
+signingConfigs {
+    create("release") {
+        storeFile = file(keystoreProperties["storeFile"] as String)
+        storePassword = keystoreProperties["storePassword"] as String
+        keyAlias = keystoreProperties["keyAlias"] as String
+        keyPassword = keystoreProperties["keyPassword"] as String
+    }
+}
+
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
-    
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
         isCoreLibraryDesugaringEnabled = true
     }
-    
+
     kotlinOptions {
         jvmTarget = "17"
     }
-    
+
     buildFeatures {
         viewBinding = true
     }
@@ -52,3 +68,4 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 }
+

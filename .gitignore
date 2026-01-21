@@ -135,3 +135,4 @@ native-build-work/
 # User requested ignores (redundant but explicit)
 android/app/.cxx/
 android/.gradle/
+app/keystore.properties
