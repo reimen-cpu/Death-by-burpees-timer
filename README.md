@@ -8,6 +8,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/reimen-cpu/Death-by-burpees-timer/releases/latest">
+    <img src="https://img.shields.io/badge/Download_APK-Latest_Release-2EA44F?style=for-the-badge&logo=android" alt="Download APK">
+  </a>
+</p>
+
+<p align="center">
   <strong>A minimalist Android timer with premium audio feedback for interval training</strong>
 </p>
 
