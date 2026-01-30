@@ -65,8 +65,8 @@ class TimerService : Service() {
     }
     
     fun updateNotification(timeRemaining: String) {
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(NOTIFICATION_ID, buildNotification(timeRemaining))
+        // Desactivado por solicitud del usuario: mantener notificación estática y silenciosa
+        // Solo la notificación inicial en startForeground es necesaria para background service
     }
     
     private fun buildNotification(timeRemaining: String): Notification {

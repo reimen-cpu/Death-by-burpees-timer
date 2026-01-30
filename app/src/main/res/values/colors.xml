@@ -10,6 +10,7 @@
     
     <!-- Accent Colors -->
     <color name="primary">#58A6FF</color>
+    <color name="accent_primary">#7EE787</color>
     <color name="primary_variant">#1F6FEB</color>
     <color name="secondary">#7EE787</color>
     <color name="accent_orange">#F0883E</color>
