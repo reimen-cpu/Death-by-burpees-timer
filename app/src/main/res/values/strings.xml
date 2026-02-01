@@ -10,6 +10,11 @@
     <string name="minute_counter">Minuto %d</string>
     <string name="burpees_label">Burpees</string>
     <string name="hint_minutes">Minutos</string>
+    <string name="label_duration">duración</string>
+    <string name="label_mins">mins</string>
+    <string name="label_work">serie</string>
+    <string name="label_rest">descanso</string>
+    <string name="label_sets">series</string>
     <string name="hint_work_duration_sec">Serie (seg)</string>
     <string name="hint_work_duration_min">Serie (min)</string>
     <string name="hint_rest_duration_sec">Descanso (seg)</string>

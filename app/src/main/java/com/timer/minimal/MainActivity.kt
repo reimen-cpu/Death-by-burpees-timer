@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var phaseIndicator: TextView
     private lateinit var setCounter: TextView
-    private lateinit var workDurationLayout: com.google.android.material.textfield.TextInputLayout
-    private lateinit var restDurationLayout: com.google.android.material.textfield.TextInputLayout
+
     private lateinit var toggleWorkUnit: com.google.android.material.button.MaterialButtonToggleGroup
     private lateinit var toggleRestUnit: com.google.android.material.button.MaterialButtonToggleGroup
     
@@ -96,18 +95,18 @@ class MainActivity : AppCompatActivity() {
         viewModel.setTimerMode(currentMode)
         
         // Ocultar/mostrar controles según modo
-        val configCard = findViewById<View>(R.id.configCard)
+        val configContainer = findViewById<View>(R.id.configContainer)
         
         when (currentMode) {
             TimerMode.ROUTINE -> {
                 // Mostrar configuración completa de intervalos
-                configCard.visibility = View.VISIBLE
+                configContainer.visibility = View.VISIBLE
                 phaseIndicator.visibility = View.VISIBLE
                 setCounter.visibility = View.VISIBLE
             }
             TimerMode.DEATH_BURPEES -> {
                 // Ocultar configuración de intervalos, solo tiempo total
-                configCard.visibility = View.GONE
+                configContainer.visibility = View.GONE
                 phaseIndicator.text = getString(R.string.mode_death_burpees)
                 setCounter.visibility = View.GONE
             }
@@ -118,8 +117,7 @@ class MainActivity : AppCompatActivity() {
         inputWorkDuration = findViewById(R.id.inputWorkDuration)
         inputRestDuration = findViewById(R.id.inputRestDuration)
         inputTotalSets = findViewById(R.id.inputTotalSets)
-        workDurationLayout = findViewById(R.id.workDurationLayout)
-        restDurationLayout = findViewById(R.id.restDurationLayout)
+
         toggleWorkUnit = findViewById(R.id.toggleWorkUnit)
         toggleRestUnit = findViewById(R.id.toggleRestUnit)
         
@@ -179,11 +177,6 @@ class MainActivity : AppCompatActivity() {
         toggleWorkUnit.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 workMultiplier = if (checkedId == R.id.btnWorkMin) 60 else 1
-                // Actualizar hint dinámicamente
-                workDurationLayout.hint = getString(
-                    if (checkedId == R.id.btnWorkMin) R.string.hint_work_duration_min
-                    else R.string.hint_work_duration_sec
-                )
                 if (!isUpdatingFromViewModel) updateWorkDurationFromInput()
             }
         }
@@ -191,11 +184,6 @@ class MainActivity : AppCompatActivity() {
         toggleRestUnit.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (isChecked) {
                 restMultiplier = if (checkedId == R.id.btnRestMin) 60 else 1
-                // Actualizar hint dinámicamente
-                restDurationLayout.hint = getString(
-                    if (checkedId == R.id.btnRestMin) R.string.hint_rest_duration_min
-                    else R.string.hint_rest_duration_sec
-                )
                 if (!isUpdatingFromViewModel) updateRestDurationFromInput()
             }
         }
