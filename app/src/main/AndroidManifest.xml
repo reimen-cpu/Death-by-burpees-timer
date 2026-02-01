@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MinimalTimer">
         
         <activity
-            android:name=".MainActivity"
+            android:name=".ModeSelectionActivity"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
@@ -24,6 +24,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+        
+        <activity
+            android:name=".DeathBurpeesActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
 
         <service
             android:name=".TimerService"
